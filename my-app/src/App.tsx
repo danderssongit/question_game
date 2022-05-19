@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react';
-import './App.css';
 import { AnswerGrid } from './components/AnswerGrid';
 import { QuestionBox } from './components/QuestionBox';
+
+import './App.css';
 
 export interface QuestionAnswer {
     text: string;
