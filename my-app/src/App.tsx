@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { AnswerGrid } from './components/AnswerGrid';
-import { QuestionBox } from './components/QuestionBox';
+import { AnswerGrid } from './components/AnswerGrid/AnswerGrid';
+import { QuestionBox } from './components/QuestionBox/QuestionBox';
 
 import './App.css';
 
@@ -18,10 +18,10 @@ const questions: QuestionObj[] = [
     {
         title: 'How much is the fish?',
         answers: [
-            {text: 'Harder', correct: false},
-            {text: 'Faster', correct: false},
-            {text: 'Scooter', correct: true},
-            {text: 'Wat', correct: false},
+            {text: '1', correct: false},
+            {text: '2', correct: false},
+            {text: '3', correct: true},
+            {text: '4', correct: false},
         ]
     }
 ];
@@ -45,10 +45,10 @@ function App() {
 
     return (
         <div className="App">
-        <header className="App-header">
-            <QuestionBox question={questions[currentQuestionIndex].title}/>
-            <AnswerGrid answers={questions[currentQuestionIndex].answers}/>
-        </header>
+            <header className="App-header">
+                <QuestionBox question={questions[currentQuestionIndex].title}/>
+                <AnswerGrid answers={questions[currentQuestionIndex].answers}/>
+            </header>
         </div>
     );
 }

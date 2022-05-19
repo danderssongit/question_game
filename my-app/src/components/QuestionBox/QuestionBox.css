@@ -1,0 +1,10 @@
+.question-box {
+    background-color: #666;
+    padding: 5rem;
+    border-style: groove;
+    border-radius: 2rem;
+    font-size: 2rem;
+    color: gold;
+    font-weight: bold;
+    user-select: none;
+}
