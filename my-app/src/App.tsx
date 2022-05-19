@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
+import { useCallback, useState } from 'react';
 import './App.css';
+import { AnswerGrid } from './components/AnswerGrid';
+import { QuestionBox } from './components/QuestionBox';
+
+export interface QuestionAnswer {
+    text: string;
+    correct: boolean;
+}
+
+export interface QuestionObj {
+    title: string;         // Can be text or image
+    answers: QuestionAnswer[];
+}
+
+const questions: QuestionObj[] = [
+    {
+        title: 'How much is the fish?',
+        answers: [
+            {text: 'Harder', correct: false},
+            {text: 'Faster', correct: false},
+            {text: 'Scooter', correct: true},
+            {text: 'Wat', correct: false},
+        ]
+    }
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState(0);
+
+    const AnswerAttempt = useCallback((answer: QuestionAnswer) => {
+        if(answer.correct) {
+            setCurrentQuestionIndex((curr) => curr + 1);
+        }
+    }, [])
+
+    const FiftyFifty = () => {
+        // removes two incorrect answers
+    }
+
+    const BonusTime = () => {
+        // gives the player ten extra seconds for the current question.
+    }
+
+    return (
+        <div className="App">
+        <header className="App-header">
+            <QuestionBox question={questions[currentQuestionIndex].title}/>
+            <AnswerGrid answers={questions[currentQuestionIndex].answers}/>
+        </header>
+        </div>
+    );
 }
 
 export default App;
